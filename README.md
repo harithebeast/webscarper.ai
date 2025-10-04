@@ -1,17 +1,16 @@
 # **Web Scraper AI**
 
-A powerful web scraping tool powered by Llama 3.1. This project leverages advanced natural language processing capabilities to intelligently extract and process data from websites.
+A powerful web scraping tool powered by Google Gemini AI. This project leverages advanced natural language processing capabilities to intelligently extract and process data from websites.
 
 ---
 
 ## **Prerequisites**
 
-Before cloning and running this project, ensure the following are installed on your system:
+Before cloning and running this project, ensure the following are set up:
 
-1. **[Ollama](https://ollama.com)**  
-   - Ollama is required to manage and run Llama 3.1 locally.  
-2. **Llama 3.1**  
-   - Install Llama 3.1 via Ollama to enable AI functionalities.  
+1. **Google Gemini API Key**  
+   - Sign up at [Google AI Studio](https://makersuite.google.com/app/apikey) to get your API key
+   - You'll need this to access Google's Gemini AI model
 
 ---
 
@@ -31,12 +30,9 @@ source venv/bin/activate   # On Windows: venv\Scripts\activate
 # Install the required Python packages
 pip install -r requirements.txt
 
-# Step 3: Verify Ollama and Llama 3.1 Installation
-# Ensure Ollama is running, and Llama 3.1 is available
-ollama list
+# Step 3: Set up your Gemini API Key
+# Create a .env file in the project root and add your API key:
+echo "GEMINI_API_KEY=your_api_key_here" > .env
 
-# If Llama 3.1 is not listed, install it
-ollama pull llama3.1
-
-# Step 4: Configure the Project
-# Update the `config.json` file to customize scraping parameters like URLs, data fields, and output formats.
+# Step 4: Run the application
+streamlit run main.py

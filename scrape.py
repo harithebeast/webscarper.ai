@@ -7,6 +7,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 import os
 
@@ -27,8 +28,8 @@ def scrape_website(website):
     chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
     chrome_options.add_experimental_option('useAutomationExtension', False)
     
-    # Set up the WebDriver
-    service = Service("chromedriver.exe")  # Replace with the path to your ChromeDriver
+    # Set up the WebDriver with automatic ChromeDriver management
+    service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=chrome_options)
     
     try:
@@ -69,7 +70,7 @@ def clean_body_content(body_content):
     return cleaned_content
 
 
-def split_dom_content(dom_content, max_length=6000):
+def split_dom_content(dom_content, max_length=4000):
     return [
         dom_content[i : i + max_length] for i in range(0, len(dom_content), max_length)
     ]
